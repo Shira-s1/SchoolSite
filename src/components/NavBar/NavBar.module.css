@@ -1,0 +1,5 @@
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{font-weight:700;color:var(--accent)}
+.links a{margin-left:18px;text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--accent)}
+.active{color:var(--accent);font-weight:600}
