@@ -23,7 +23,13 @@ export default function CartPage(){
     toast({ title: 'Removed', description: 'Item removed from cart', status: 'info', duration: 3000, isClosable: true, position: 'top-right' })
   }
   function proceed(){
-    toast({ title: 'Navigating', description: 'Navigating to Payment Page.', status: 'info', duration: 3000, isClosable: true, position: 'top-right' })
+    // Place order: show confirmation and clear cart
+    if(items.length === 0){
+      toast({ title: 'Cart Empty', description: 'Your cart is empty.', status: 'info', duration: 3000, isClosable: true, position: 'top-right' })
+      return
+    }
+    toast({ title: 'Order Placed', description: 'Thank you! Your order has been placed.', status: 'success', duration: 4000, isClosable: true, position: 'top-right' })
+    dispatch({type: 'CLEAR'})
   }
 
   return (
@@ -64,7 +70,7 @@ export default function CartPage(){
 
           <HStack justify="space-between" mt={4}>
             <Text fontWeight={700}>Total: ${total.toFixed(2)}</Text>
-            <Button colorScheme="blue" onClick={proceed}>Proceed to Payment</Button>
+            <Button colorScheme="blue" onClick={proceed}>Place Order</Button>
           </HStack>
         </>
       )}
